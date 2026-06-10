@@ -1,0 +1,184 @@
+{
+  "https://kansic.bykayle.com": {
+    "673fe5fd8335": {
+      "kind": "axe_serious",
+      "route": "/",
+      "message": "color-contrast: Elements must meet minimum color contrast ratio thresholds (4 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "754a91526fb1": {
+      "kind": "axe_critical",
+      "route": "/",
+      "message": "label: Form elements must have labels (6 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "c21effc8a88c": {
+      "kind": "axe_critical",
+      "route": "/",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "a915f78d5de3": {
+      "kind": "axe_critical",
+      "route": "/positions",
+      "message": "label: Form elements must have labels (2 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "f8911509efd3": {
+      "kind": "axe_critical",
+      "route": "/positions",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "23c6fd889e05": {
+      "kind": "axe_critical",
+      "route": "/trades",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "b9c4d49e40f0": {
+      "kind": "axe_critical",
+      "route": "/journal",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "35b97c21114f": {
+      "kind": "axe_serious",
+      "route": "/thesis",
+      "message": "color-contrast: Elements must meet minimum color contrast ratio thresholds (4 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "1de1fc7e342a": {
+      "kind": "axe_critical",
+      "route": "/thesis",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "5047fb05cdd7": {
+      "kind": "network_4xx",
+      "route": "/thesis/new",
+      "message": "HTTP 401 https://kansic.bykayle.com/proxy-api/positions",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "4f8b56d4968a": {
+      "kind": "console_error",
+      "route": "/thesis/new",
+      "message": "Failed to load resource: the server responded with a status of 401 ()",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "d625ca25b7fb": {
+      "kind": "network_4xx",
+      "route": "/thesis/new",
+      "message": "HTTP 401 https://kansic.bykayle.com/proxy-api/trades?limit=1",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "0edfa32898d3": {
+      "kind": "axe_critical",
+      "route": "/thesis/new",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "8ef2d058582c": {
+      "kind": "axe_critical",
+      "route": "/settings",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "43cf5cceb8ca": {
+      "kind": "network_4xx",
+      "route": "/thesis",
+      "message": "HTTP 401 https://kansic.bykayle.com/proxy-api/trades?limit=1",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "6d279fa133ab": {
+      "kind": "console_error",
+      "route": "/thesis",
+      "message": "Failed to load resource: the server responded with a status of 401 ()",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "f59f2ce8f88e": {
+      "kind": "network_4xx",
+      "route": "/thesis",
+      "message": "HTTP 401 https://kansic.bykayle.com/proxy-api/positions",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "d89a61d6ac24": {
+      "kind": "axe_critical",
+      "route": "/thesis/btc-260419140200",
+      "message": "button-name: Buttons must have discernible text (4 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "e01c265cbd68": {
+      "kind": "axe_serious",
+      "route": "/thesis/btc-260419140200",
+      "message": "color-contrast: Elements must meet minimum color contrast ratio thresholds (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    },
+    "b0d6d032e0df": {
+      "kind": "axe_critical",
+      "route": "/thesis/btc-260419140200",
+      "message": "meta-viewport: Zooming and scaling must not be disabled (1 nodes)",
+      "first_seen": "2026-04-21T02:16:15",
+      "last_seen": "2026-04-21T02:16:15",
+      "run_count": 1,
+      "status": "open"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+# probe · {{ plan_name }}
+
+- **Target**: `{{ plan_target }}`
+- **Generated**: {{ generated_at }}
+- **Combinations**: {{ summary.total }}  ·  ✅ pass {{ summary.passed }}  ·  🟡 warn {{ summary.warned }}  ·  🔴 fail {{ summary.failed }}
+
+**Severity counts** — critical {{ summary.severities.critical }}, major {{ summary.severities.major }}, minor {{ summary.severities.minor }}
+
+## Matrix
+
+| # | Bindings | VP | Browser | Result | Failing checks |
+|---|---|---|---|---|---|
+{% for r in results -%}
+| {{ r.id }} | {% for k, v in r.bindings.items() if not k.startswith('_') %}`{{ k }}`={{ v }}{% if not loop.last %}, {% endif %}{% endfor %} | {{ r.bindings['_viewport'] }} | {{ r.bindings['_browser'] }} | {% if r.overall == 'pass' %}✅ pass{% elif r.overall == 'warn' %}🟡 warn{% else %}🔴 fail{% endif %} | {% for c in r.checks if not c.ok %}{{ c.name }}{% if not loop.last %}, {% endif %}{% endfor %}{% if r.checks|selectattr('ok', 'equalto', false)|list|length == 0 %}—{% endif %} |
+{% endfor %}
+
+{% set failures = results | selectattr('overall', 'equalto', 'fail') | list %}
+{% if failures %}
+## Failures
+
+{% for r in failures %}
+### {{ r.id }} — {% for k, v in r.bindings.items() if not k.startswith('_') %}{{ k }}={{ v }}{% if not loop.last %} · {% endif %}{% endfor %}
+
+{% if r.screenshot %}![screenshot]({{ r.screenshot }}){% endif %}
+
+{% for c in r.checks if not c.ok %}
+- {{ SEV_ICON.get(c.severity, '⚪') }} **{{ c.name }}** ({{ c.severity }}) — {{ c.message }}
+{% if c.details %}
+  <details><summary>details</summary>
+
+```json
+{{ c.details | tojson(indent=2) }}
+```
+  </details>
+{% endif %}
+{% endfor %}
+
+Reproduce: `{{ r.reproduce }}`
+
+{% endfor %}
+{% endif %}
+
+{% set warns = results | selectattr('overall', 'equalto', 'warn') | list %}
+## Warnings
+
+{% if warns %}
+{% for r in warns %}
+- {{ r.id }} — {% for c in r.checks if not c.ok %}{{ c.name }} ({{ c.severity }}){% if not loop.last %}, {% endif %}{% endfor %}
+{% endfor %}
+{% else %}
+(none)
+{% endif %}

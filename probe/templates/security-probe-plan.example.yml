@@ -1,0 +1,36 @@
+# security-probe-plan.example.yml
+#
+# A low-side-effect web security smoke probe. Use only on owned or explicitly
+# authorized targets. This is not a full penetration test.
+
+target: "https://example.com"
+name: "Web security smoke probe"
+
+dimensions:
+  authState: [anonymous]
+
+viewports: [desktop, mobile]
+browsers: [chromium]
+
+setup: []
+
+actions:
+  - wait: 500
+
+assertions:
+  - noConsoleErrors
+  - noNetworkErrors
+  - noBrokenLinks
+  - securityHeaders:
+      requireHsts: auto
+  - cookieSecurity:
+      requireSecure: auto
+      requireHttpOnly: true
+      requireSameSite: true
+  - noMixedContent
+  - noSensitiveUrlParams
+  - axe: { impact: [critical, serious] }
+
+strategy: pairwise
+parallel: 2
+

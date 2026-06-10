@@ -1,0 +1,24 @@
+{
+  "id": "atelier-skill",
+  "name": "Atelier Skill",
+  "owner": "BYKAYLE",
+  "repository": "https://github.com/BYKAYLE/atelier-skill.git",
+  "visibility": "public",
+  "description": "Public Atelier skill bundle for Stella, Stella Factory, Probe, Release, and agent orchestration.",
+  "private_exclusions": [
+    "deploy-pilot (private deployment automation)",
+    "kmd (private company database)",
+    "bk-wiki (private company wiki)",
+    "night-lab (internal R&D infrastructure)",
+    "runtime state: SOT/, sessions/, daily/, logs",
+    "personal API credentials"
+  ],
+  "recommended_install_roots": [
+    "~/.atelier/skills",
+    "~/.claude/skills",
+    "~/.codex/skills",
+    "~/.hermes/skills"
+  ],
+  "skills_count": 41,
+  "last_updated": "2026-06-10"
+}

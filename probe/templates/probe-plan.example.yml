@@ -1,0 +1,28 @@
+# probe-plan.example.yml — minimal starter
+#
+# Run with:
+#   python ~/.claude/skills/probe/scripts/run_probe.py probe-plan.example.yml
+
+target: "https://example.com"
+name: "Example probe"
+
+dimensions:
+  locale: [en-US, ko-KR]
+
+viewports: [desktop, mobile]
+browsers: [chromium]
+
+setup: []
+
+actions:
+  - wait: 500
+
+assertions:
+  - noConsoleErrors
+  - noNetworkErrors
+  - noBrokenLinks
+  - hasElement: 'h1'
+  - axe: { impact: [critical, serious] }
+
+strategy: pairwise
+parallel: 2

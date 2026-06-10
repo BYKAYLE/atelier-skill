@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.0",
+  "factory_id": "sf-YYYYMMDD-HHMMSS",
+  "created_at": "YYYY-MM-DDTHH:MM:SS+09:00",
+  "updated_at": "YYYY-MM-DDTHH:MM:SS+09:00",
+  "project": {
+    "path": "/absolute/project/path",
+    "name": "project-name"
+  },
+  "goal": "Build the service to product-ready state.",
+  "mode": "local-staging",
+  "status": "draft",
+  "constraints": {
+    "db_data_deletion": "forbidden_without_explicit_user_approval",
+    "production_deploy": "requires_explicit_user_approval",
+    "paid_api_budget": "requires_explicit_user_approval",
+    "external_communication": "requires_explicit_user_approval",
+    "offensive_security": "requires_explicit_user_approval_and_scope"
+  },
+  "gates": [
+    {
+      "id": "db_data_deletion",
+      "status": "pending",
+      "requires_human_approval": true,
+      "evidence": []
+    },
+    {
+      "id": "production_deploy",
+      "status": "pending",
+      "requires_human_approval": true,
+      "evidence": []
+    },
+    {
+      "id": "paid_api_budget",
+      "status": "pending",
+      "requires_human_approval": true,
+      "evidence": []
+    },
+    {
+      "id": "external_communication",
+      "status": "pending",
+      "requires_human_approval": true,
+      "evidence": []
+    },
+    {
+      "id": "offensive_security",
+      "status": "pending",
+      "requires_human_approval": true,
+      "evidence": []
+    }
+  ],
+  "roles": [
+    {
+      "id": "sentinel",
+      "owner": "Stella",
+      "kind": "sentinel",
+      "purpose": "Request normalization, priority, and boundary decisions",
+      "spawn_policy": "external_entrypoint"
+    },
+    {
+      "id": "orchestrator",
+      "owner": "Release",
+      "kind": "orchestrator",
+      "purpose": "State, gates, role assignment, and delivery control",
+      "spawn_policy": "local"
+    },
+    {
+      "id": "architect",
+      "owner": "architect-reviewer",
+      "kind": "planner",
+      "purpose": "Architecture and long-term boundary review",
+      "spawn_policy": "dynamic_when_architecture_or_cross_surface"
+    },
+    {
+      "id": "builder",
+      "owner": "fullstack-developer",
+      "kind": "worker",
+      "purpose": "Implementation across bounded files and surfaces",
+      "spawn_policy": "dynamic_per_surface"
+    },
+    {
+      "id": "reviewer",
+      "owner": "reviewer",
+      "kind": "reviewer",
+      "purpose": "Independent correctness and regression review",
+      "spawn_policy": "after_worker_output"
+    },
+    {
+      "id": "runtime_auditor",
+      "owner": "Probe",
+      "kind": "auditor",
+      "purpose": "Independent UI/API/runtime smoke and security assertions",
+      "spawn_policy": "required_when_url_ui_or_runtime_surface"
+    },
+    {
+      "id": "security_auditor",
+      "owner": "security-router",
+      "kind": "auditor",
+      "purpose": "Static/code security and specialist security routing",
+      "spawn_policy": "required_for_auth_data_security_or_final_security"
+    }
+  ],
+  "stages": [
+    {
+      "id": "intake",
+      "state": "in_progress",
+      "roles": ["sentinel", "orchestrator"],
+      "depends_on": [],
+      "done_requires": ["goal", "success_criteria", "constraints"],
+      "artifacts": []
+    },
+    {
+      "id": "product_brief",
+      "state": "queued",
+      "roles": ["orchestrator"],
+      "depends_on": ["intake"],
+      "done_requires": ["acceptance_criteria"],
+      "artifacts": []
+    },
+    {
+      "id": "repo_map",
+      "state": "queued",
+      "roles": ["architect"],
+      "depends_on": ["product_brief"],
+      "done_requires": ["code_map", "runbook"],
+      "artifacts": []
+    },
+    {
+      "id": "architecture",
+      "state": "queued",
+      "roles": ["architect"],
+      "depends_on": ["repo_map"],
+      "done_requires": ["architecture_decisions", "risk_surface"],
+      "artifacts": []
+    },
+    {
+      "id": "decomposition",
+      "state": "queued",
+      "roles": ["orchestrator"],
+      "depends_on": ["architecture"],
+      "done_requires": ["task_breakdown", "file_ownership", "parallel_groups"],
+      "artifacts": []
+    },
+    {
+      "id": "parallel_implementation",
+      "state": "queued",
+      "roles": ["builder"],
+      "depends_on": ["decomposition"],
+      "done_requires": ["modified_files", "local_verification"],
+      "artifacts": []
+    },
+    {
+      "id": "integration",
+      "state": "queued",
+      "roles": ["orchestrator", "builder"],
+      "depends_on": ["parallel_implementation"],
+      "done_requires": ["integrated_diff", "conflict_resolution"],
+      "artifacts": []
+    },
+    {
+      "id": "verification",
+      "state": "queued",
+      "roles": ["reviewer", "runtime_auditor"],
+      "depends_on": ["integration"],
+      "done_requires": ["tests", "build", "probe_or_skip_reason"],
+      "artifacts": []
+    },
+    {
+      "id": "security_review",
+      "state": "queued",
+      "roles": ["security_auditor", "runtime_auditor"],
+      "depends_on": ["verification"],
+      "done_requires": ["static_security", "runtime_security_or_skip_reason"],
+      "artifacts": []
+    },
+    {
+      "id": "deployment_readiness",
+      "state": "queued",
+      "roles": ["orchestrator"],
+      "depends_on": ["security_review"],
+      "done_requires": ["staging_smoke_or_skip_reason", "rollback_plan"],
+      "artifacts": []
+    },
+    {
+      "id": "final_audit",
+      "state": "queued",
+      "roles": ["orchestrator", "reviewer"],
+      "depends_on": ["deployment_readiness"],
+      "done_requires": ["gate_summary", "known_issues", "delivery_report"],
+      "artifacts": []
+    }
+  ],
+  "artifacts": [],
+  "known_issues": [],
+  "limits": {
+    "max_child_agents": 12,
+    "max_parallel_agents": 3,
+    "max_retries_per_stage": 3,
+    "max_wall_clock_minutes": null
+  },
+  "green_policy": {
+    "required_evidence": ["command", "exit_code", "artifact_path", "independent_verification"],
+    "self_check_only_state": "validation_required",
+    "mock_only_state": "validation_required"
+  },
+  "file_leases": [],
+  "agent_requests": [],
+  "agent_results": [],
+  "gate_results": [],
+  "missing_capabilities": [],
+  "foundry": {
+    "mode": "request_manifest_when_missing",
+    "proposed_manifests": []
+  },
+  "execution_plan": {
+    "runner_version": "0.2",
+    "mode": "plan_only_until_parent_spawns_agents",
+    "worktree_isolation": {
+      "enabled": true,
+      "root": ".service-factory/worktrees",
+      "policy": "one_writer_per_owned_path"
+    },
+    "parallel_groups": [],
+    "watchdog": {
+      "enabled": true,
+      "stale_after_minutes": 15,
+      "progress_files": ["SOT/service-factory/progress.jsonl", "SOT/service-factory/handoff-latest.md"],
+      "action": "mark_blocked_or_respawn_from_handoff"
+    },
+    "handoff": {
+      "enabled": true,
+      "required_fields": ["factory_id", "current_owner", "last_command", "last_artifact", "blocked_reason", "next_step"]
+    },
+    "automatic_gates": []
+  },
+  "runtime": {
+    "backend": null,
+    "last_run_id": null,
+    "last_run_at": null,
+    "status": "not_started"
+  },
+  "run_log": {
+    "current_owner": "Release",
+    "last_command": null,
+    "last_artifact": null,
+    "blocked_reason": null,
+    "next_step": "product_brief"
+  },
+  "budget": {
+    "agent_call_limit": null,
+    "paid_api_limit": "requires_explicit_user_approval",
+    "notes": []
+  },
+  "resume": {
+    "count": 0,
+    "last_completed_stage": null,
+    "notes": []
+  }
+}
