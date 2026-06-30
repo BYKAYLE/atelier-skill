@@ -85,8 +85,8 @@ Agent 보고서의 주관적 판단(Tier 2)에 추가하여, 아래 객관적 �
 | show-me-the-prd | PRD 4종 md | 4개 파일 존재 + 각 ≥ 500B |
 | bykayle-slide-team | .pen/.pptx | 파일 존재 + ≥ 10KB |
 | notebooklm | 리서치 보고서 md | 파일 존재 + ≥ 1KB |
-| night-lab | 최종 보고서 md | 파일 존재 + ≥ 2KB |
-| kmd | records/ 파일 | 파일 존재 + JSON/MD 유효 |
+| private-rd-orchestrator | 최종 보고서 md | 파일 존재 + ≥ 2KB |
+| private-company-data-skill | records/ 파일 | 파일 존재 + JSON/MD 유효 |
 | it-field-support | (산출물 없음) | Tier 2만 적용 |
 | kkirikkiri | (다양) | 파일 존재만 |
 
@@ -99,13 +99,13 @@ bykayle-slide-team, show-me-the-prd, it-field-support, k-dense-ai, kkirikkiri �
 
 ## Tier 3: 프로덕션 필수 게이트 (배포 서비스 전용)
 
-**트리거**: deploy-pilot이 포함된 파이프라인에서 배포 전 반드시 실행.
+**트리거**: private-deployment-skill이 포함된 파이프라인에서 배포 전 반드시 실행.
 배포가 없는 개발 작업에는 적용하지 않음.
 
 ### 3A. 런타임 보안 smoke (Probe)
 
 코드 레벨 보안(security-router)과 별개로, 실제 동작 중인 서비스에 대한 저부작용 런타임 검수.
-기본값은 Probe이며, 실제 침투/공격 실행/광범위 스캔은 `pentest-router`로 분리하고 대표님 명시 승인 + scope 기록 전에는 실행하지 않는다.
+기본값은 Probe이며, 실제 침투/공격 실행/광범위 스캔은 `pentest-router`로 분리하고 사용자 명시 승인 + scope 기록 전에는 실행하지 않는다.
 
 | Check | 방법 | Pass 조건 |
 |-------|------|----------|

@@ -75,7 +75,7 @@ ENCODING_OR_WRAPPER_PATTERNS = [
 ]
 
 # ── Safe Patterns (오케스트레이터 직접 실행 시 허용) ──────────────────
-# deploy-pilot 크리덴셜 참조에 등록된 키체인 항목 읽기 (비파괴 작업)
+# private-deployment-skill 크리덴셜 참조에 등록된 키체인 항목 읽기 (비파괴 작업)
 SAFE_PATTERNS = [
     r"security\s+find-generic-password(?:\s+(?:-[A-Za-z](?:\s+\S+)?|\S+))*",  # macOS Keychain 읽기 전용
 ]

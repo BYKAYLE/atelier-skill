@@ -605,7 +605,7 @@ def _maybe_local_server(plan: Plan):
         return
 
     parsed = urlparse(url)
-    # Turn file://C:/Users/... into C:/Users/...
+    # Turn Windows file URLs into normal drive paths.
     raw_path = unquote(parsed.path)
     if raw_path.startswith("/") and len(raw_path) >= 3 and raw_path[2] == ":":
         raw_path = raw_path[1:]  # strip leading slash on Windows

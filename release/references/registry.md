@@ -22,11 +22,11 @@ Last updated: 2026-05-27
 | it-field-support | IT infrastructure | IT 지원, 현장 지원, PC 문제, 오피스 인증, 네트워크 진단, 프린터 안 돼, 공유폴더, NAS 접속, 라이센스, 포맷, 인터넷 안 돼, 공유기 | IT support, printer issue, network |
 | ~~L1/L2/L3 보안~~ | ~~독립 스킬~~ | security-router/references/로 병합됨 (l1-owasp, l2-sentry, l3-trailofbits) | |
 | notebooklm | Market research / content | /notebooklm, 시장조사, 리서치 노트북, 팟캐스트 만들어줘, 소스 분석 | market research, create podcast, summarize URLs |
-| deploy-pilot | Deployment | 배포해줘, NAS에 올려줘, 프로덕션 배포, 서비스 올려줘, 도커 배포, 시놀로지 배포 | deploy, push to NAS, production deploy, docker deploy |
-| kmd | Company master DB | 회사 정보, 회사 현황, 마스터 DB, KMD, 회사 상황 기록, 프로젝트 현황 기록, 회사 데이터 | company info, company status, master DB, KMD |
+| private-deployment-skill | Deployment | 배포해줘, NAS에 올려줘, 프로덕션 배포, 서비스 올려줘, 도커 배포, 시놀로지 배포 | deploy, push to NAS, production deploy, docker deploy |
+| private-company-data-skill | Company master DB | 회사 정보, 회사 현황, 마스터 DB, KMD, 회사 상황 기록, 프로젝트 현황 기록, 회사 데이터 | company info, company status, master DB, KMD |
 | autoresearch | Autonomous iteration | /autoresearch, 자율 반복, 메트릭 최적화, 자동 개선, 밤새 돌려, 반복 실험, 자율 루프 | autoresearch, autonomous loop, iterate until done, run overnight |
 | stella | AI Product Owner | 스텔라, stella, 백로그 처리, 자율 실행, 다음 태스크, 우선순위 판단, 기능 판단 | stella, backlog, autonomous execution, next task |
-| bk-wiki | Knowledge wiki | 위키, bk-wiki, 회사정보 정리, 위키 업데이트, 위키에서 찾아, 컴파일, 린트 | wiki, compile wiki, wiki query, wiki lint |
+| private-knowledge-wiki | Knowledge wiki | 위키, private-knowledge-wiki, 회사정보 정리, 위키 업데이트, 위키에서 찾아, 컴파일, 린트 | wiki, compile wiki, wiki query, wiki lint |
 
 ## External Skills (Plugins)
 
@@ -57,10 +57,10 @@ Last updated: 2026-05-27
 | parallel-dev | pumasi | autonomous-dev |
 | team-building | kkirikkiri | — |
 | market-research | notebooklm | show-me-the-prd (자체 리서치) |
-| deep-rd | ⚠️ night-lab (peer 오케스트레이터, release 하위 아님 — Stella가 직접 위임) | k-dense-ai |
+| deep-rd | ⚠️ private-rd-orchestrator (peer 오케스트레이터, release 하위 아님 — Stella가 직접 위임) | k-dense-ai |
 | code-review | simplify | sisyphus-workflow |
-| deployment | deploy-pilot | — |
-| company-data | kmd | — |
+| deployment | private-deployment-skill | — |
+| company-data | private-company-data-skill | — |
 | autonomous-iteration | autoresearch | sisyphus-workflow |
 | product-ownership | stella | — |
 

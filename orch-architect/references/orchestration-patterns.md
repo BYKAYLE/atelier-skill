@@ -49,7 +49,7 @@
 | Memory | 에이전트 간 공유 메모리 (SOT 파일) |
 | Delegation | 에이전트가 다른 에이전트에게 위임 가능 |
 
-**적용 사례**: night-lab (7명 서브에이전트 역할 분담)
+**적용 사례**: private-rd-orchestrator (7명 서브에이전트 역할 분담)
 
 ---
 
@@ -94,7 +94,7 @@ SOT/
 
 ---
 
-## 5. 자체 패턴: night-lab v3.5
+## 5. 자체 패턴: private-rd-orchestrator v3.5
 
 **핵심**: 루프 기반 목표 지향 연구 + 도메인 권위 축적.
 

@@ -1,8 +1,8 @@
 # Service Factory Mode — Google-style Multi-Agent Delivery
 
-대표님이 "서비스를 최종 제품까지 만들어"라고 요청했을 때 Stella가 최상위 지휘자로 목표와 에이전트 토폴로지를 정하고, Release가 실행 컨트롤러/게이트 관리자로 여러 전문 에이전트를 움직여 제품 수준까지 밀고 가는 표준 모드다.
+사용자이 "서비스를 최종 제품까지 만들어"라고 요청했을 때 Stella가 최상위 지휘자로 목표와 에이전트 토폴로지를 정하고, Release가 실행 컨트롤러/게이트 관리자로 여러 전문 에이전트를 움직여 제품 수준까지 밀고 가는 표준 모드다.
 
-참고 사례: Google Antigravity 2.0의 OS 빌드 사례는 Sentinel, Orchestrator, Explorer, Worker, Reviewer, Critic, Auditor 같은 역할 분리와 다수 subagent를 사용했다. 이 문서는 그 방식을 바이케일 로컬 환경의 Stella/Release/Probe/security-router 구조에 맞춘다.
+참고 사례: Google Antigravity 2.0의 OS 빌드 사례는 Sentinel, Orchestrator, Explorer, Worker, Reviewer, Critic, Auditor 같은 역할 분리와 다수 subagent를 사용했다. 이 문서는 그 방식을 Atelier 로컬 환경의 Stella/Release/Probe/security-router 구조에 맞춘다.
 
 ## 핵심 원칙
 
@@ -12,7 +12,7 @@
 4. **한 에이전트가 만든 것을 같은 에이전트가 최종 승인하지 않는다.** Worker와 Reviewer/Auditor를 분리한다.
 5. **완료 조건은 산출물이 아니라 검증 증거다.** 빌드, 테스트, 타입체크, Probe, 보안 리뷰, 배포 smoke가 있어야 한다.
 6. **상태는 파일로 남긴다.** `SOT/service-factory-state.json`이 재개, 교차 검토, 비용 통제의 기준이다.
-7. **대표님 승인 게이트는 자동 통과하지 않는다.** DB/데이터 삭제, 프로덕션 배포, 유료 API 예산 초과, 외부 발화, 공격성 보안 테스트는 명시 승인 전까지 pending이다.
+7. **사용자 승인 게이트는 자동 통과하지 않는다.** DB/데이터 삭제, 프로덕션 배포, 유료 API 예산 초과, 외부 발화, 공격성 보안 테스트는 명시 승인 전까지 pending이다.
 
 ## Intake Contract — 4항목 완결성 게이트 (260603 신설)
 
@@ -65,11 +65,11 @@ python3 service_factory.py plan --project <p>
 | 재개성 | 작업 상태와 산출물을 파일로 넘겨 후속 에이전트가 이어받는다. | 컨텍스트 한계 뒤에 이전 판단을 반복한다. |
 | 실패 격리 | 실패한 Worker를 교체해도 전체 파이프라인은 유지된다. | 하나가 막히면 전체가 멈춘다. |
 
-## 바이케일 역할 매핑
+## Atelier 역할 매핑
 
 | Google식 역할 | 로컬 역할 | 책임 |
 |---------------|-----------|------|
-| Sentinel/Commander | Stella | 대표님 요청 해석, 목적/우선순위/금지선 판단, AgentTopology 생성, 최종 완료/반려 |
+| Sentinel/Commander | Stella | 사용자 요청 해석, 목적/우선순위/금지선 판단, AgentTopology 생성, 최종 완료/반려 |
 | Runtime Controller | Release | Service Factory 상태 원장, 에이전트 배치 실행, dispatch/collect, 게이트 통과 관리 |
 | Explorer | code-mapper, search-specialist, docs-researcher, NightLab 협조 | 코드/문서/시장/기술 탐색 |
 | Planner | product-manager, architect-reviewer, business-analyst | PRD, 아키텍처, 수용 기준 |
@@ -159,7 +159,7 @@ Stella는 아래 조건 중 하나가 생기면 AgentBlueprint를 만들고, Rel
 
 ## 승인 게이트
 
-아래는 자동 실행 금지다. 상태 파일에 `pending`으로 남기고 대표님 승인이 있어야 한다.
+아래는 자동 실행 금지다. 상태 파일에 `pending`으로 남기고 사용자 승인이 있어야 한다.
 
 | Gate | 자동 금지 항목 |
 |------|----------------|
@@ -301,7 +301,7 @@ Stella는 아래 조건 중 하나가 생기면 AgentBlueprint를 만들고, Rel
 - `proposed_manifest`: `~/.codex/agents/{agent_type}.toml` 후보 내용
 - `suggested_action`: `create_agent_manifest`
 
-Foundry는 자동 설치가 아니라 생성 제안 단계다. 새 agent manifest가 필요하면 `agent-installer` 또는 대표님 승인 흐름으로 분리한다.
+Foundry는 자동 설치가 아니라 생성 제안 단계다. 새 agent manifest가 필요하면 `agent-installer` 또는 사용자 승인 흐름으로 분리한다.
 
 ## Runner와 Watchdog
 

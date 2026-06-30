@@ -25,13 +25,13 @@
 2b: Development (autonomous-dev S-Phase 2+) → QG Tier 1
 3: Hardening (sisyphus_claude) → Release Loop
 4: Security-Static (security-router) → CRITICAL=0, HIGH=0
-5: Deploy (deploy-pilot) → HTTP 200 + Running
+5: Deploy (private-deployment-skill) → HTTP 200 + Running
 6: Security-Runtime-Smoke (Probe) + Legal (오케스트레이터) [병렬]
-   ※ 침투/공격성 테스트는 대표님 명시 승인 + scope 기록 시에만 pentest-router 별도 실행
+   ※ 침투/공격성 테스트는 사용자 명시 승인 + scope 기록 시에만 pentest-router 별도 실행
 ```
 
 ## Service Factory Build (product-ready multi-agent delivery)
-대표님이 "최종 제품까지", "Google처럼", "많은 에이전트가 개발/검증/디버깅까지"를 요청하면 Full Service Build보다 이 패턴을 우선한다.
+사용자이 "최종 제품까지", "Google처럼", "많은 에이전트가 개발/검증/디버깅까지"를 요청하면 Full Service Build보다 이 패턴을 우선한다.
 
 ```
 0: Factory Init
@@ -74,7 +74,7 @@
 ## Research → Presentation (50K~100K)
 ```
 0: Research (notebooklm) → QG Tier 2.5
-   ※ 심층 연구 필요 시 night-lab에 협조 요청 (peer 오케스트레이터, release 하위 아님)
+   ※ 심층 연구 필요 시 private-rd-orchestrator에 협조 요청 (peer 오케스트레이터, release 하위 아님)
 1: Slides (bykayle-slide-team) → QG Tier 2.5
 ```
 
@@ -99,15 +99,15 @@
 
 ## Deep Research (100K~300K)
 ```
-※ night-lab은 peer 오케스트레이터 — release가 위임하지 않음. Stella 또는 대표님이 직접 호출.
-※ release 파이프라인에서 연구 필요 시: notebooklm 또는 k-dense-ai 사용, 심층 R&D는 night-lab에 협조 요청.
+※ private-rd-orchestrator은 peer 오케스트레이터 — release가 위임하지 않음. Stella 또는 사용자이 직접 호출.
+※ release 파이프라인에서 연구 필요 시: notebooklm 또는 k-dense-ai 사용, 심층 R&D는 private-rd-orchestrator에 협조 요청.
 0: Research (k-dense-ai/notebooklm) → QG Tier 2.5
 1: Synthesis [optional] → 종합+시각화
 ```
 
 ## Deployment (30K~60K)
 ```
-0: Deploy (deploy-pilot 8Phase) → HTTP 200 + Running
+0: Deploy (private-deployment-skill 8Phase) → HTTP 200 + Running
 ```
 
 ## 동적 생성 (패턴 없을 때)
